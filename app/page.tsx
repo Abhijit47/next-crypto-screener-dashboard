@@ -1,5 +1,7 @@
+import Categories from '@/components/home/categories';
 import CoinOverview from '@/components/home/coin-overview';
 import {
+  CategoriesFallback,
   CoinOverviewFallback,
   TrendingCoinsFallback,
 } from '@/components/home/fallback';
@@ -20,13 +22,8 @@ export default function Home() {
       </section>
 
       <section className='w-full mt-7 space-y-4'>
-        <Suspense
-          fallback={
-            // <CategoriesFallback />
-            <p>Loading categories...</p>
-          }>
-          {/* <Categories /> */}
-          <div>Categories</div>
+        <Suspense fallback={<CategoriesFallback />}>
+          <Categories />
         </Suspense>
       </section>
     </main>
