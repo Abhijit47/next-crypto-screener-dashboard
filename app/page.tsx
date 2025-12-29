@@ -5,7 +5,7 @@ import { toast } from 'sonner';
 
 export default function Home() {
   return (
-    <p className={'text-3xl text-purple-500'}>
+    <p className={'text-3xl text--purple-600'}>
       Coin Pulse
       <ThemeModeToggler />
       <Button
