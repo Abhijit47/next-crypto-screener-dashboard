@@ -1,3 +1,4 @@
+import Header from '@/components/shared/header';
 import { ThemeProvider } from '@/providers/theme-provider';
 import ToastProvider from '@/providers/toast-provider';
 import type { Metadata } from 'next';
@@ -34,7 +35,10 @@ export default function RootLayout({
           defaultTheme='system'
           enableSystem
           disableTransitionOnChange>
-          <ToastProvider>{children}</ToastProvider>
+          <ToastProvider>
+            <Header />
+            {children}
+          </ToastProvider>
         </ThemeProvider>
       </body>
     </html>
