@@ -59,10 +59,8 @@ export default function CandleStickChart({
   const handlePeriodChange = (newPeriod: Period) => {
     if (newPeriod === period) return;
 
-    startTransition(async () => {
-      setPeriod(newPeriod);
-      await fetchOHLCData(newPeriod);
-    });
+    setPeriod(newPeriod);
+    fetchOHLCData(newPeriod);
   };
 
   useEffect(() => {
