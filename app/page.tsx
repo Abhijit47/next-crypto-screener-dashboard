@@ -1,22 +1,34 @@
-'use client';
-import { ThemeModeToggler } from '@/components/shared/theme-mode-toggler';
-import { Button } from '@/components/ui/button';
-import { toast } from 'sonner';
+import CoinOverview from '@/components/home/coin-overview';
+import {
+  CoinOverviewFallback,
+  TrendingCoinsFallback,
+} from '@/components/home/fallback';
+import TrendingCoins from '@/components/home/trending-coins';
+import { Suspense } from 'react';
 
 export default function Home() {
   return (
-    <p className={'text-3xl text--purple-600'}>
-      Coin Pulse
-      <ThemeModeToggler />
-      <Button
-        onClick={() => {
-          toast('Hit me 🙅🏻‍♂️🙅🏻‍♂️🙅🏻‍♂️🙅🏻‍♂️');
-          // toast.success('success');
-          // toast.error('success');
-          // toast.info('success');
-        }}>
-        Hit me
-      </Button>
-    </p>
+    <main className='main-container'>
+      <section className='home-grid'>
+        <Suspense fallback={<CoinOverviewFallback />}>
+          <CoinOverview />
+        </Suspense>
+
+        <Suspense fallback={<TrendingCoinsFallback />}>
+          <TrendingCoins />
+        </Suspense>
+      </section>
+
+      <section className='w-full mt-7 space-y-4'>
+        <Suspense
+          fallback={
+            // <CategoriesFallback />
+            <p>Loading categories...</p>
+          }>
+          {/* <Categories /> */}
+          <div>Categories</div>
+        </Suspense>
+      </section>
+    </main>
   );
 }
