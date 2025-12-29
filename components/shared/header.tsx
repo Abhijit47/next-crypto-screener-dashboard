@@ -1,9 +1,11 @@
 'use client';
 
+import { dummyTrendingCoins } from '@/constants';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { SearchModal } from '../search-modal';
 
 const Header = () => {
   const pathname = usePathname();
@@ -30,7 +32,7 @@ const Header = () => {
             Home
           </Link>
 
-          <p>Search Modal</p>
+          <SearchModal initialTrendingCoins={dummyTrendingCoins} />
 
           <Link
             href='/coins'
